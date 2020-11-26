@@ -32,7 +32,7 @@ function nuqlearViz() {
   c.save();
   c.translate(canvas.width / 2, canvas.height / 2);
 
-  grid.draw();
+  grid.update();
 
   ////graph
   //c.lineCap = "round";
