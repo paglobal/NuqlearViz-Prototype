@@ -1,4 +1,4 @@
-//Grid class
+//grid class
 class Grid {
   constructor() {
     //spacing between vertical grid lines (Also acts as one unit on the x-axis)
@@ -38,7 +38,7 @@ class Grid {
     this.y_gridLinePseudoLength = 3 * canvas.height;
   }
 
-  //Grid draw method
+  //grid draw method
   draw() {
     //draw major horizontal axis
     c.strokeStyle = this.majorAxisColor;
@@ -181,7 +181,7 @@ class Grid {
     }
   }
 
-  //Grid update method
+  //grid update method
   update() {
     //this.x_angle += 0.005;
     //this.x_spacing += 0.1;

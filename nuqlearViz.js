@@ -1,37 +1,58 @@
+//declare variable for canvas
 let canvas;
+
+//declare variable for context
 let c;
+
+//declare variable for grid
 let grid;
+
+//declare variable for background color
 let backgroundColor = "black";
+
+////declare variable for graph color
 //let graphColor = "white";
 
+//call initiate function after DOM content is loaded
 addEventListener("DOMContentLoaded", initiate);
 
-//Initiate function
+//initiate function
 function initiate() {
-  //Canvas instantiation
+  //canvas instantiation
+  //select canvas element and store it in the canvas variable
   canvas = document.querySelector("canvas");
+
+  //store the context in the c variable
   c = canvas.getContext("2d");
+
+  //set up initial canvas width and height to fill the entire viewport
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+
+  //initialize a new grid and store in it the grid variable
   grid = new Grid();
 
-  //Resize event listener
+  //event listener to resize the canvas on window resize
   addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   });
 
+  //call nuqlearViz function
   nuqlearViz();
 }
 
+//nuqlearViz function
 function nuqlearViz() {
-  //Background
+  //background color update
   c.fillStyle = backgroundColor;
   c.fillRect(0, 0, canvas.width, canvas.height);
 
   c.save();
+  //translate the canvas with the origin at the center of the viewport
   c.translate(canvas.width / 2, canvas.height / 2);
 
+  //draw and update the grid
   grid.update();
 
   ////graph
