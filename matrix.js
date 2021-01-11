@@ -1,17 +1,10 @@
 //matrix class
 class Matrix {
   constructor(array) {
-    //actual matrix
-    this.matrix = array;
-
-    //number of rows of matrix
-    this.rows = array.length;
-
-    //number of columns of matrix
-    this.columns = array[0].length;
-
-    //string representation of size of matrix (eg. "2 x 3")
-    this.size = `${this.rows} x ${this.columns}`;
+    this.matrix = array; //actual matrix
+    this.rows = array.length; //number of rows of matrix
+    this.columns = array[0].length; //number of columns of matrix
+    this.size = `${this.rows} x ${this.columns}`; //string representation of size of matrix (eg. "2 x 3")
   }
 
   /*

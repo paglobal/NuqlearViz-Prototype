@@ -1,41 +1,18 @@
 //grid class
 class Grid {
   constructor() {
-    //spacing between vertical grid lines (Also acts as one unit on the x-axis)
-    this.x_spacing = 36;
-
-    //spacing between horizontal grid lines (Also acts as one unit on the y-axis)
-    this.y_spacing = 36;
-
-    //number of grid lines after which the next grid line is also a minor axis (for vertical grid lines)
-    this.x_gridSpacing = 2;
-
-    //number of grid lines after which the next grid line is also a minor axis (for horizontal grid lines)
-    this.y_gridSpacing = 2;
-
-    //color of major axes
-    this.majorAxisColor = "white";
-
-    //color of minor axes
-    this.minorAxisColor = "#21a2d9";
-
-    //color of grid lines
-    this.gridLineColor = "white";
-
-    //angle horizontal grid lines make with the horizontal
-    this.x_angle = 0;
-
-    //anlge vertical grid lines make with the vertical
-    this.y_angle = 0;
-
-    //determinant of number of grid lines
-    this.gridLineNumber = (canvas.width / (this.x_spacing * 2)) * 4;
-
-    //partial determinant of length of vertical grid lines
-    this.x_gridLinePseudoLength = 3 * canvas.width;
-
-    //partial determinant of length of horizontal grid lines
-    this.y_gridLinePseudoLength = 3 * canvas.height;
+    this.x_spacing = 36; //spacing between vertical grid lines (Also acts as one unit on the x-axis)
+    this.y_spacing = 36; //spacing between horizontal grid lines (Also acts as one unit on the y-axis)
+    this.x_gridSpacing = 2; //number of grid lines after which the next grid line is also a minor axis (for vertical grid lines)
+    this.y_gridSpacing = 2; //number of grid lines after which the next grid line is also a minor axis (for horizontal grid lines)
+    this.majorAxisColor = "white"; //color of major axes
+    this.minorAxisColor = "#21a2d9"; //color of minor axes
+    this.gridLineColor = "white"; //color of grid lines
+    this.x_angle = 0; //angle horizontal grid lines make with the horizontal
+    this.y_angle = 0; //anlge vertical grid lines make with the vertical
+    this.gridLineNumber = (canvas.width / (this.x_spacing * 2)) * 4; //determinant of number of grid lines
+    this.x_gridLinePseudoLength = 3 * canvas.width; //partial determinant of length of vertical grid lines
+    this.y_gridLinePseudoLength = 3 * canvas.height; //partial determinant of length of horizontal grid lines
   }
 
   //grid draw method

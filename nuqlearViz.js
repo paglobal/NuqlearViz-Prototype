@@ -1,17 +1,8 @@
-//declare variable for canvas
-let canvas;
-
-//declare variable for context
-let c;
-
-//declare variable for grid
-let grid;
-
-//declare variable for background color
-let backgroundColor = "black";
-
-////declare variable for graph color
-//let graphColor = "white";
+let canvas; //declare variable for canvas
+let c; //declare variable for context
+let grid; //declare variable for grid
+let backgroundColor = "black"; //declare variable for background color
+//let graphColor = "white";//declare variable for graph color
 
 //call initiate function after DOM content is loaded
 addEventListener("DOMContentLoaded", initiate);

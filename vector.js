@@ -1,17 +1,10 @@
-//vector class
+//vector_2d class
 class Vector_2D {
   constructor(x, y, x_displacement = 0, y_displacement = 0) {
-    //set vector x component
-    this.x = x;
-
-    //set vector y component
-    this.y = y;
-
-    //set x_displacement
-    this.x_displacement = x_displacement;
-
-    //set y_displacement
-    this.y_displacement = y_displacement;
+    this.x = x; //set vector x component
+    this.y = y; //set vector y component
+    this.x_displacement = x_displacement; //set x_displacement
+    this.y_displacement = y_displacement; //set y_displacement
   }
 
   /*
@@ -177,3 +170,6 @@ class Vector_2D {
     return unit_vector;
   }
 }
+
+//vector_3d class
+class Vector_3D {}
