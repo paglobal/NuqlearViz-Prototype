@@ -1,7 +1,11 @@
-let canvas; //declare variable for canvas
-let c; //declare variable for context
-let grid; //declare variable for grid
-let backgroundColor = "black"; //declare variable for background color
+import { Grid } from "./grid.js"
+import { Matrix } from "./matrix.js"
+import { Vector_2D } from "./vector.js"
+
+export let canvas: HTMLCanvasElement; //declare variable for canvas
+export let c: CanvasRenderingContext2D; //declare variable for context
+export let grid: Grid; //declare variable for grid
+let backgroundColor: string = "black"; //declare variable for background color
 //let graphColor = "white";//declare variable for graph color
 
 //call initiate function after DOM content is loaded
@@ -11,10 +15,10 @@ addEventListener("DOMContentLoaded", initiate);
 function initiate() {
   //canvas instantiation
   //select canvas element and store it in the canvas variable
-  canvas = document.querySelector("canvas");
+  canvas = document.querySelector("canvas")!;
 
   //store the context in the c variable
-  c = canvas.getContext("2d");
+  c = canvas.getContext("2d")!;
 
   //set up initial canvas width and height to fill the entire viewport
   canvas.width = window.innerWidth;

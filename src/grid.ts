@@ -1,5 +1,20 @@
+import { canvas, c } from "./nuqlearViz.js"
+
 //grid class
-class Grid {
+export class Grid {
+  x_spacing: number;
+  y_spacing: number;
+  x_gridSpacing: number;
+  y_gridSpacing: number;
+  majorAxisColor: string;
+  minorAxisColor: string;
+  gridLineColor: string;
+  x_angle: number;
+  y_angle: number;
+  gridLineNumber: number;
+  x_gridLinePseudoLength: number;
+  y_gridLinePseudoLength: number;
+
   constructor() {
     this.x_spacing = 36; //spacing between vertical grid lines (Also acts as one unit on the x-axis)
     this.y_spacing = 36; //spacing between horizontal grid lines (Also acts as one unit on the y-axis)

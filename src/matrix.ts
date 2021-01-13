@@ -1,6 +1,11 @@
 //matrix class
-class Matrix {
-  constructor(array) {
+export class Matrix {
+  matrix: number[][];
+  rows: number;
+  columns: number;
+  size: string;
+
+  constructor(array: number[][]) {
     this.matrix = array; //actual matrix
     this.rows = array.length; //number of rows of matrix
     this.columns = array[0].length; //number of columns of matrix
@@ -14,23 +19,23 @@ class Matrix {
    */
 
   //static method to add multiple matrices
-  static add(...matrices) {
+  static add(...matrices: Matrix[]) {
     //create a zero matrix with the specified size
-    let result_matrix = Matrix.zero(matrices[0].rows, matrices[0].columns);
+    let result_matrix: Matrix = Matrix.zero(matrices[0].rows, matrices[0].columns);
 
     //loop through all the matrix argumennts, adding each successive matrix to the current value of result_matrix on each iteration
     for (let m = 0; m < matrices.length; m++) {
       console.log(result_matrix);
-      result_matrix = result_matrix.add(matrices[m]);
+      result_matrix = result_matrix.add(matrices[m])!;
     }
 
     return result_matrix;
   }
 
   //static method to create an empty matrix
-  static empty(rows, columns) {
+  static empty(rows: number, columns: number) {
     //create an empty array
-    let result_matrix = [];
+    let result_matrix: any[][] = [];
 
     //a composition of two loops that builds an empty matrix with the specified size from the empty array
     for (let r = 0; r < rows; r++) {
@@ -44,9 +49,9 @@ class Matrix {
   }
 
   //static class method that creates a new identity matrix
-  static identity(size) {
+  static identity(size: number) {
     //create an empty array
-    let result_matrix = [];
+    let result_matrix: number[][] = [];
 
     //a composition of two loops that builds an identity matrix from the empty array with the specified size
     for (let r = 0; r < size; r++) {
@@ -60,23 +65,23 @@ class Matrix {
   }
 
   //static method to multiply multiply matrices
-  static multiply(...matrices) {
+  static multiply(...matrices: Matrix[]) {
     //create an identity matrix
-    let result_matrix = Matrix.identity(matrices[0].rows, matrices[0].columns);
+    let result_matrix: Matrix = Matrix.identity(matrices[0].rows);
 
     //loop through all the matrix argumennts, multiplying each successive matrix with the current value of result_matrix on each iteration
     for (let m = 0; m < matrices.length; m++) {
       console.log(result_matrix);
-      result_matrix = matrices[m].multiply(result_matrix);
+      result_matrix = matrices[m].multiply(result_matrix)!;
     }
 
     return result_matrix;
   }
 
   //static class method that creates a new 2d reflection matrix
-  static reflection_2d(reference) {
+  static reflection_2d(reference: string) {
     //create an empty array
-    let result_matrix = [];
+    let result_matrix: number[][] = [];
 
     //a variable to store the matrix size
     let size = 2;
@@ -130,15 +135,15 @@ class Matrix {
   }
 
   //static class method that creates a new 3d reflection matrix
-  static reflection_3d(plane) {
+  static reflection_3d(plane: string) {
     //create an empty array
-    let result_matrix = [];
+    let result_matrix: number[][] = [];
 
     //a variable to store the matrix size
     let size = 3;
 
     //an array to help map planes letters to indices
-    let plane_array = ["yz", "xz", "xy"];
+    let plane_array: string[] = ["yz", "xz", "xy"];
 
     //a composition of two loops that builds a reflection matrix from the empty array with the specified size
     for (let r = 0; r < size; r++) {
@@ -156,18 +161,18 @@ class Matrix {
   }
 
   //static class method that creates a new rotation matrix
-  static rotation(size, axis, angle) {
+  static rotation(size: number, axis: string, angle: number) {
     //convert the specified angle to radians
     let radians = angle * (Math.PI / 180);
 
     //create an empty array
-    let result_matrix = [];
+    let result_matrix: number[][] = [];
 
     //an array to help map axis letters to indices
-    let axis_array = ["x", "y", "z"];
+    let axis_array: string[] = ["x", "y", "z"];
 
     //variable to store sign of sin of angle
-    let sign;
+    let sign: number;
     //a composition of two loops that builds a reflection matrix from the empty array with the specified size
     for (let r = 0; r < size; r++) {
       result_matrix[r] = [];
@@ -190,9 +195,9 @@ class Matrix {
   }
 
   //static class method that creates a new scalar matrix
-  static scalar(size, ...axes) {
+  static scalar(size: number, ...axes: number[]) {
     //create an empty array
-    let result_matrix = [];
+    let result_matrix: number[][] = [];
 
     //a composition of two loops that builds a scalar matrix from the empty array with the specified size
     for (let r = 0; r < size; r++) {
@@ -206,9 +211,9 @@ class Matrix {
   }
 
   //static class method that creates a new shear matrix
-  static shear(size, axis, shear_factor) {
+  static shear(size: number, axis: string, shear_factor: number) {
     //create an empty array
-    let result_matrix = [];
+    let result_matrix: number[][] = [];
 
     //an array to help map axis letters to indices
     let axis_array = ["x", "y", "z"];
@@ -229,9 +234,9 @@ class Matrix {
   }
 
   //static class method that creates a new matrix filled with ones
-  static zero(rows, columns) {
+  static zero(rows: number, columns: number) {
     //create an empty array
-    let result_matrix = [];
+    let result_matrix: number[][] = [];
 
     //a composition of two loops that builds a zero matrix from the empty array with the specified size
     for (let r = 0; r < rows; r++) {
@@ -244,18 +249,18 @@ class Matrix {
     return new Matrix(result_matrix);
   }
 
-  /* 
+  /*
    ===============
    Regular Methods
    ===============
    */
 
   //matrix add method to add
-  add(matrix) {
+  add(matrix: Matrix) {
     //if statement that checks to see whether or not the two matrices can be multiplied before attempting to multiply them
     if (this.rows === matrix.rows && this.columns === matrix.columns) {
       //create an empty array
-      let result_matrix = [];
+      let result_matrix: number[][] = [];
 
       //a composition of two loops that adds the two matrices and stores the result in result_matrix
       for (let r = 0; r < this.rows; r++) {
@@ -274,7 +279,7 @@ class Matrix {
     //an if statement that checks to see if the matrix has a determinant before attempting to compute it
     if (this.rows === this.columns) {
       //declare a variable to store the determinant
-      let det;
+      let det: number = 0;
 
       //computes the determinant if the matrix is a 1 x 1 matrix
       if (this.rows === 1) {
@@ -308,9 +313,9 @@ class Matrix {
   inverse() {
     //if statement to check whether or not the matrix has an inverse
     if (this.rows === this.columns) {
-      let I = Matrix.identity(this.rows).matrix;
-      let C = this.matrix;
-      let e = 0;
+      let I: number[][] = Matrix.identity(this.rows).matrix;
+      let C: number[][] = this.matrix;
+      let e: number = 0;
       // perform elementary row operations
       for (let i = 0; i < this.rows; i++) {
         // get the element e on the diagonal
@@ -323,7 +328,7 @@ class Matrix {
             //if the ii'th row has a non-0 in the i'th col
             if (C[ii][i] != 0) {
               //it would make the diagonal have a non-0 so swap it
-              for (let j = 0; j < dim; j++) {
+              for (let j = 0; j < this.columns; j++) {
                 e = C[i][j]; //temp store i'th row
                 C[i][j] = C[ii][j]; //replace i'th row by ii'th
                 C[ii][j] = e; //repace ii'th by temp
@@ -379,11 +384,11 @@ class Matrix {
   }
 
   //matrix multiply method to multiply the matrix with other matrices
-  multiply(matrix) {
+  multiply(matrix: Matrix) {
     //if statement that checks to see whether or not the two matrices can be added before attempting to add them
     if (this.rows === matrix.columns) {
       //create an empty array
-      let result_matrix = [];
+      let result_matrix: number[][] = [];
 
       //a composition of two loops that multiplies the two matrices and stores the result in result_matrix
       for (let r = 0; r < matrix.rows; r++) {
@@ -403,7 +408,7 @@ class Matrix {
   //matrix transpose method to transpose matrix
   transpose() {
     //create an empty array to store the matix transpose
-    let matrix_transpose = [];
+    let matrix_transpose: number[][] = [];
 
     //a composition of two loops that transpose the matrix
     for (let r = 0; r < this.rows; r++) {
